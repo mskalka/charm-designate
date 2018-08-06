@@ -116,6 +116,36 @@ class BindRNDCRelationAdapter(openstack_adapters.OpenStackRelationAdapter):
         """
         return self.relation.rndc_info
 
+class InfobloxAdapter(openstack_adapters.OpenStackRelationAdapter):
+
+    @property
+    def pool(self):
+        return self.relation.pool
+
+    @property
+    def pool_target(self):
+        return self.relation.pool_target
+
+    @property
+    def nameserver(self):
+        return self.relation.nameserver
+
+    @property
+    def host(self):
+        return self.relation.infoblox_host
+
+    @property
+    def wapi_version(self):
+        return self.relation.wapi_version
+
+    @property
+    def username(self):
+        return self.relation.admin_username
+
+    @property
+    def password(self):
+        return self.relation.admin_password
+
 
 class DesignateConfigurationAdapter(
         openstack_adapters.APIConfigurationAdapter):
@@ -289,6 +319,7 @@ class DesignateAdapters(openstack_adapters.OpenStackAPIRelationAdapters):
         'cluster': openstack_adapters.PeerHARelationAdapter,
         'dns_backend': BindRNDCRelationAdapter,
         'coordinator_memcached': openstack_adapters.MemcacheRelationAdapter,
+        'infoblox': InfobloxAdapter,
     }
 
 

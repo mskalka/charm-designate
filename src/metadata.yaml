@@ -30,6 +30,8 @@ requires:
     scope: container
   coordinator-memcached:
     interface: memcache
+  infoblox-backend:
+    interface: infoblox
 peers:
   cluster:
     interface: openstack-ha

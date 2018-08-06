@@ -221,6 +221,12 @@ def expose_endpoint(endpoint):
         endpoint.expose_endpoint(instance.public_url)
 
 
+@reactive.when('infoblox.connected'):
+def infoblox_connected(*args):
+    with provide_charm_instance() as instance:
+        instance.render_full_config(*args)
+
+
 @reactive.when_not('dont-set-assess-status')
 def run_assess_status_on_every_hook():
     """The call to charm instance.assess_status() sets up the assess status
